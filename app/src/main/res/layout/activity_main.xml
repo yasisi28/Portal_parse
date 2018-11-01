@@ -26,10 +26,12 @@
             android:layout_width="99dp"
             android:layout_height="wrap_content" />
 
-        <TextView
-            android:id="@+id/urlText"
+        <EditText
+            android:id="@+id/editText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <TextView
             android:id="@+id/View_html"
