@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private EditText editText;
     private com.example.yasisi28.portal_parse.DownloadTask task;
-    EditText editText = this.<EditText>findViewById(R.id.urlText);
+//    EditText editText = this.<EditText>findViewById(R.id.urlText);
     TextView tv = (TextView) findViewById(R.id.View_html);
 
     String param0;
@@ -26,18 +26,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                param0 = editText.getText().toString();
+               // param0 = editText.getText().toString();
+                param0 = "https://techbooster.org/android/mashup/13635/";
 
                 if(param0.length() != 0){
                     //ボタンをタップして非同期処理の開始
-                    task = new com.exsamle.yasisi28.portal_parse.DownloadTask(editText);
+                    task = new com.example.yasisi28.portal_parse.DownloadTask(tv);
                     //リスナーを設定
                     task.execute(param0);
                 }
 
             }
         });
-
-
     }
 }

@@ -21,19 +21,21 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected Elements doInBackground(String... params) {
         //String url = "https://techbooster.org/";
 
         //HTMLのドキュメントを取得
+        Elements title = null;
+        Elements body;
         try {
             Document document = Jsoup.connect(String.valueOf(params)).get();
 
             //titleタグを取得
-            Elements title = document.getElementsByTag("title");
+            title = document.getElementsByTag("title");
             //String title1 = document.title();
 
             //bodyタグをIDから取得
-            Elements body = document.getElementsByTag("body");
+            body = document.getElementsByTag("body");
             //Element body1 = document.body();
 
         } catch (IOException e) {
@@ -43,8 +45,8 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
     }
 
     @Override
-    protected void onPostExecute(Elements title,Elements body){
-
+    protected void onPostExecute(Elements title){
+        textView.setText(title.toString());
     }
 
 
