@@ -34,17 +34,17 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
         Elements title = null;
         String url = "https://akira-watson.com/android/custom-listener.html";
         Elements body = null;
+        Elements value = null;
         try {
             Document document = Jsoup.connect(url).get();
 
-            title = document.getElementsByTag("title");
+            value = document.getElementsByAttributeValue("class", "alignleft top-title-catchphrase");
 
-            body = document.getElementsByTag("body");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return body;
+        return value;
     }
 
     @Override
