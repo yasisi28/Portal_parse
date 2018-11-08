@@ -118,6 +118,8 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
             Document doc3 = res3.parse();
             Elements element = doc3.getElementsByTag("body");
             System.out.println(res3.statusCode());
+            String mycs = element.toString();
+            System.out.println("csrf" + mycs + "----");
 
         } catch (IOException e) {
             e.printStackTrace();
