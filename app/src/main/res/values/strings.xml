@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Portal_parse</string>
+    <string name="error">コンテンツが存在していないか、取得できませんでした</string>
 </resources>
