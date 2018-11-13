@@ -13,6 +13,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static android.content.ContentValues.TAG;
@@ -64,7 +65,7 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
 
             final String password = "h091207";
 
-            Map<String , String > formData = new HashMap<>();
+            Map<String , String > formData = new LinkedHashMap<>();
             formData.put("_csrf", csrf);
             formData.put("password", "");
             formData.put("uid", login);
@@ -95,10 +96,11 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
                     .header("Content-Length", Integer.toString(requestBody.length()))
                     .cookies(cookies)
                     .requestBody(requestBody)
-                    .method(Connection.Method.POST)
-                    .followRedirects(false);
+                    .method(Connection.Method.POST);
 
             Connection.Response res2 = con2.execute();
+            System.out.println("formData" + requestBody);
+            System.out.println("content-length " + Integer.toString(requestBody.length()));
 
             //ログイン後に発行されるクッキーの取得
             Map<String, String> cookies2 = res2.cookies();
@@ -120,6 +122,7 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
             System.out.println(res3.statusCode());
             String mycs = element.toString();
             System.out.println("csrf" + mycs + "----");
+            System.out.println("cookies2 "+cookies);
 
         } catch (IOException e) {
             e.printStackTrace();
