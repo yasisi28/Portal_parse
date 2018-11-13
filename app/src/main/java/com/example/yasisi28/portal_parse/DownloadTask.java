@@ -99,8 +99,6 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
                     .method(Connection.Method.POST);
 
             Connection.Response res2 = con2.execute();
-            System.out.println("formData" + requestBody);
-            System.out.println("content-length " + Integer.toString(requestBody.length()));
 
             //ログイン後に発行されるクッキーの取得
             Map<String, String> cookies2 = res2.cookies();
@@ -118,11 +116,8 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
                     .execute();
 
             Document doc3 = res3.parse();
-            Elements element = doc3.getElementsByTag("body");
-            System.out.println(res3.statusCode());
-            String mycs = element.toString();
-            System.out.println("csrf" + mycs + "----");
-            System.out.println("cookies2 "+cookies);
+            //String plan = doc3.select("");
+            value = doc3.getElementsByAttributeValue("class", "KITP00200Portfolio");
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,7 +129,7 @@ public class DownloadTask extends AsyncTask<String, Void, Elements> {
     protected void onPostExecute(Elements result){
         //super.onPostExecute(result);
 //         String str = result.toString();
-       textView.setText("42");
+       textView.setText(result.toString());
         if(textView.length() == 0){
             textView.setText(R.string.error);
         }
